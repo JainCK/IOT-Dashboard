@@ -3,6 +3,7 @@ import Signin from './Pages/Signin'
 import Signup from './Pages/Signup'
 import Dashboard from './Pages/Dashboard'
 import './App.css'
+import Settings from './Pages/Settings'
 
 function App() {
 
@@ -10,9 +11,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </>
