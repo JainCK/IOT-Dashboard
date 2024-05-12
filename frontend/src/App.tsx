@@ -4,6 +4,7 @@ import Signup from './Pages/Signup'
 import Dashboard from './Pages/Dashboard'
 import './App.css'
 import Settings from './Pages/Settings'
+import Layout from './Pages/layout'
 
 function App() {
 
@@ -13,8 +14,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
+          {/* Add routes for "users" and "devices" with appropriate components */}
+        </Route>
         </Routes>
       </BrowserRouter>
     </>
