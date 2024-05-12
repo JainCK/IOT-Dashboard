@@ -16,10 +16,10 @@ const SigninForm = () => {
     <div>    
       <div className="h-screen flex justify-center flex-col">
     <div className="flex justify-center">
-      <div>
+      <div className="font-Raleway">
         <div className="px-10">
           <div className="text-3xl font-extrabold">Sign into your account</div>
-          <div className="text-slate-400 text-lg text-center">
+          <div className="text-slate-400 text-sm text-center">
             Or
             <Link className="pl-2 text-blue-700" to="/signup">
               signup for a new account
