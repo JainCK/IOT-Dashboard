@@ -2,19 +2,18 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
-  } from "chart.js";
-  import { Line } from "react-chartjs-2";
+  } from 'chart.js';
+  import { Bar } from 'react-chartjs-2';
+
   
   ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend
@@ -22,10 +21,13 @@ import {
   
   export const options = {
     responsive: true,
-    tension: 0.4,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
       },
     },
   };
@@ -60,6 +62,6 @@ import {
     ],
   };
   
-  export default function LineChart() {
-    return <Line options={options} data={data} />;
+  export function Barchart() {
+    return <Bar options={options} data={data} />;
   }
