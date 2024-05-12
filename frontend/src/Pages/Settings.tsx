@@ -1,7 +1,4 @@
 import { useState } from "react";
-import LabelInput from "../Components/Labelinput";
-import Sidebar from "../Components/Sidebar";
-
 
 const Settings = () => {
   const [userDetails, setUserDetails] = useState({
@@ -15,49 +12,22 @@ const Settings = () => {
   }
 
   return (
-    <div className="flex flex-row">
-        <Sidebar />
-        <div className="pl-48">
-        <div className="h-screen flex flex-col justify-center items-center">
-      <div>
-        <div className="px-10">
-          <div className="text-3xl font-extrabold">Edit your details</div>
-        </div>
-        <div className="pt-2">
-          <LabelInput
-            type="text"
-            placeholder="Name"
-            onChange={(e) =>
-              setUserDetails({ ...userDetails, name: e.target.value })
-            }
-          />
-          <LabelInput
-            type="email"
-            placeholder="Email Address"
-            onChange={(e) =>
-              setUserDetails({ ...userDetails, email: e.target.value })
-            }
-          />
-          <LabelInput
-            type="tel"
-            placeholder="Phone Number"
-            onChange={(e) =>
-              setUserDetails({ ...userDetails, phone: e.target.value })
-            }
-          />
-          <button
-            onClick={saveSettings}
-            type="button"
-            className="mt-8 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-          >
-            Save
-          </button>
-        </div>
+    <form className="mb-2 py-10 px-12">
+      <h2 className="text-2xl font-bold mb-1">Edit your details</h2>
+      <div className="mb-2">
+        <label htmlFor="name" className="block mb-1 text-sm font-medium text-gray-900 dark:text-black">Your name</label>
+        <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-48 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setUserDetails({ ...userDetails, name: e.target.value })} required />
       </div>
-    </div>
-
-        </div>
-    </div>
+      <div className="mb-2">
+        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-black">Your email</label>
+        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-48 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })} required />
+      </div>
+      <div className="mb-2">
+        <label htmlFor="phone" className="block mb-1 text-sm font-medium text-gray-900 dark:text-black">Your phone number</label>
+        <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg py-2.5 px-48" onChange={(e) => setUserDetails({ ...userDetails, phone: e.target.value })} required />
+      </div>
+      <button type="submit" onClick={saveSettings} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm max-w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+    </form>
   );
 };
 
