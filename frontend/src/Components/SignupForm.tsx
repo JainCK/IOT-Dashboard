@@ -18,34 +18,32 @@ const SignupForm = () => {
     <div className="flex justify-center">
       <div>
         <div className="px-10">
-          <div className="text-3xl font-extrabold">Create an account</div>
-          <div className="text-slate-400">
+          <div className="text-3xl font-extrabold">Create a new account</div>
+          <div className="text-slate-400 text-center text-sm ">
             Already have an account?{" "}
-            <Link className="pl-2 underline" to="/signin">
+            <Link className="pl-2 underline" to="/">
               Sign in
             </Link>
           </div>
         </div>
-        <div className="pt-10">
+        <div className="pt-2">
           <LabelInput
-            label="Name"
-            placeholder="John Doe"
+           
+            placeholder="Name"
             onChange={(e) =>
               setSignUpInputs({ ...signUpInputs, name: e.target.value })
             }
           />
           <LabelInput
-            label="Email"
             type="email"
-            placeholder="JohnDoe@email.com"
+            placeholder="Email Address"
             onChange={(e) =>
               setSignUpInputs({ ...signUpInputs, email: e.target.value })
             }
           />
           <LabelInput
-            label="Password"
             type="password"
-            placeholder="******"
+            placeholder="Password"
             onChange={(e) =>
               setSignUpInputs({ ...signUpInputs, password: e.target.value })
             }

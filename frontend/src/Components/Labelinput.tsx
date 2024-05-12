@@ -1,23 +1,19 @@
 import { ChangeEvent } from "react";
 
 interface LabellInputType {
-  label: string;
   placeholder: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 }
 
 const LabelInput = ({
-  label,
+  
   placeholder,
   onChange,
   type,
 }: LabellInputType) => {
   return (
-    <div>
-      <label className="block mb-2 text-sm text-black font-semibold pt-4">
-        {label}
-      </label>
+    <div className="pt-5">
       <input
         onChange={onChange}
         type={type || "text"}

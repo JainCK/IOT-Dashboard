@@ -13,30 +13,31 @@ const SigninForm = () => {
       }
 
   return (
-    <div>    <div className="h-screen flex justify-center flex-col">
+    <div>    
+      <div className="h-screen flex justify-center flex-col">
     <div className="flex justify-center">
       <div>
         <div className="px-10">
-          <div className="text-3xl font-extrabold">Create an account</div>
-          <div className="text-slate-400">
-            Already have an account?{" "}
-            <Link className="pl-2 underline" to="/">
-              Sign in
+          <div className="text-3xl font-extrabold">Sign into your account</div>
+          <div className="text-slate-400 text-lg text-center">
+            Or
+            <Link className="pl-2 text-blue-700" to="/signup">
+              signup for a new account
             </Link>
           </div>
         </div>
-          <LabelInput
-            label="Email"
+        <div className="pt-2">
+        <LabelInput
             type="email"
-            placeholder="JohnDoe@email.com"
+            placeholder="Email Address"
             onChange={(e) =>
               setSignUpInputs({ ...signUpInputs, email: e.target.value })
             }
           />
           <LabelInput
-            label="Password"
+            
             type="password"
-            placeholder="******"
+            placeholder="Password"
             onChange={(e) =>
               setSignUpInputs({ ...signUpInputs, password: e.target.value })
             }
@@ -48,6 +49,8 @@ const SigninForm = () => {
           >
             Sign up
           </button>
+
+        </div>
         </div>
       </div>
     </div>
