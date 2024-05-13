@@ -19,7 +19,24 @@ model User {
     email String @unique
     name String 
     password String
+    active Boolean @default(true)
     role Role @default(User)
+}
+
+model Device {
+  id String @id @default(uuid())
+  name String
+  devicedata DeviceData[]
+}
+
+model DeviceData {
+  id String @id @default(uuid())
+  deviceId String
+  timestamp DateTime
+  value String
+  createdAt DateTime @default(now())
+
+  device Device @relation(fields: [deviceId], references: [id])
 }
 
 enum Role {
