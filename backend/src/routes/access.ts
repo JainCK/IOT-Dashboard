@@ -17,24 +17,27 @@ export const accessRouter = new Hono<{
   accessRouter.use("/*", async (c, next) => {
     const authHeader = c.req.header("Authorization") || "";
     try {
-      const user = await verify(authHeader, c.env.JWT_SECRET);
-      if (user) {
-        c.set("userId", user.id);
-        await next();
-      } else {
-        c.status(403);
-        return c.json({
-          message: "You are not Logged In",
-        });
+      const decoded  = await verify(authHeader, c.env.JWT_SECRET);
+      const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+      }).$extends(withAccelerate());
+      const user = await prisma.user.findUnique({
+        where: {
+          id: decoded.id,
+        },
+      });
+      if (!user || user.role !== 'Admin') {
+        throw new Error('Unauthorized'); 
       }
+        await next();
     } catch (error) {
+      console.log(error)
       c.status(403);
       return c.json({
-        message: "You are not Logged In",
+        message: "You are not an Admin",
       });
     }
   });
-
 
 accessRouter.put('/', async(c) => {
   const body = await c.req.json();
@@ -46,12 +49,13 @@ accessRouter.put('/', async(c) => {
     where: {
       id: body.id,
     },
-    data: {
-      role: body.role
+    data: {   
+      role: body.role,
+      active: body.active ? false : true
     },
   });
 
-  return c.text("role updated successfully");
+  return c.text("role or active status updated successfully");
 })
 
 
@@ -77,7 +81,7 @@ accessRouter.get("/bulk", async (c) => {
 })
 
 
-accessRouter.delete("/:id", async (c) => {
+accessRouter.delete("/", async (c) => {
   const body = await c.req.json();
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -94,13 +98,11 @@ accessRouter.delete("/:id", async (c) => {
 
 
 
+
+
 {/* 
-admin users access control
 
-/bulk --get
-/editRole --put
-/delete --delete  -- add this 
-/activate --put (boolean) --add in prisma schema as well active(boolean);
 
+/bulk --get --pagination
 
 */}
