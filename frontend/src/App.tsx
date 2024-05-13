@@ -3,7 +3,7 @@ import Signin from './Pages/Signin'
 import Signup from './Pages/Signup'
 import Dashboard from './Pages/Dashboard'
 import './App.css'
-import Settings from './Pages/Settings'
+import AdminDashboard from './Pages/AdminDash'
 import Layout from './Pages/layout'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<AdminDashboard />} />
           {/* Add routes for "users" and "devices" with appropriate components */}
         </Route>
         </Routes>
