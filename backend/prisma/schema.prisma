@@ -26,6 +26,7 @@ model User {
 model Device {
   id String @id @default(uuid())
   name String
+  description String
   devicedata DeviceData[]
 }
 
@@ -34,7 +35,6 @@ model DeviceData {
   deviceId String
   timestamp DateTime
   value String
-  createdAt DateTime @default(now())
 
   device Device @relation(fields: [deviceId], references: [id])
 }
