@@ -1,17 +1,30 @@
 import { useState } from "react";
 import LabelInput from "../Components/Labelinput"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../../config"
+import axios from "axios"
 
 const SignupForm = () => {
-    const [signUpInputs, setSignUpInputs] = useState({
-        name: "",
-        email: "",
-        password: "",
-      });
+  const navigate = useNavigate();
+ const [signUpInputs, setSignUpInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-      function signUp() {
-        alert("Your are signed Up")
-      }
+  async function signUp() {
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/v1/user/signup`,
+        signUpInputs
+      );
+      const jwt = response.data;
+      localStorage.setItem("token", jwt);
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Error while signing up");
+    }
+  }
 
   return (
     <div>    <div className="h-screen flex justify-center flex-col">

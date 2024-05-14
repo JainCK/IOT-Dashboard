@@ -6,7 +6,7 @@ const links = [
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-1/6 bg-white py-10 px-12 font-Raleway border-r-2 border-slate-200">
+    <div className="h-screen w-1/6 bg-white py-10 px-12 font-Raleway border-r-2 border-slate-400">
       <h1 className="text-xl font-bold mb-4 ">
         <i className="fas fa-chart-line"></i>IOT Dashboard</h1>
       <ul className="py-10">
